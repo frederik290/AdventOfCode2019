@@ -38,7 +38,7 @@ public class Solver {
     }
 
     private List<Integer> getInput() {
-        Path path = Paths.get("/Users/frederik290/IdeaProjects/AdventOfCode2019/Day1/Input.txt");
+        Path path = Paths.get(Paths.get("").toAbsolutePath() + "/Day1/Input.txt");
         try{
             List<String> lines =  Files.readAllLines(path);
             return lines.stream().map(s -> Integer.valueOf(s)).collect(Collectors.toList());

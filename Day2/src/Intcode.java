@@ -1,8 +1,3 @@
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
-
 public class Intcode {
     String inputPath;
     private int[] prog;
@@ -76,18 +71,7 @@ public class Intcode {
     }
 
     private int[] initProg(String inputPath) {
-        Path path = Paths.get(inputPath);
-
-        try{
-            return Arrays.stream(Files.readString(path).split(","))
-                    .map(Integer::valueOf)
-                    .mapToInt(Integer::intValue)
-                    .toArray();
-        } catch (Exception e) {
-            System.out.println("ERROR: failed to read " + path.toString());
-            System.out.println("Exception: " + e.getMessage());
-            return null;
-        }
+        return Util.getInputFromCommaSeparatedFile(inputPath);
     }
     public int[] getProg(){
         return this.prog;
